@@ -27,6 +27,8 @@ resource "azurerm_key_vault" "keyvault" {
   enabled_for_template_deployment = each.value.enabled_for_template_deployment
   enable_rbac_authorization       = each.value.enable_rbac_authorization
   purge_protection_enabled        = each.value.purge_protection_enabled
+  soft_delete_retention_days      = each.value.soft_delete_retention_days
+  public_network_access_enabled   = each.value.public_network_access_enabled
 
   dynamic "access_policy" {
     for_each = each.value.access_policy != null ? each.value.access_policy : []
@@ -44,7 +46,7 @@ resource "azurerm_key_vault" "keyvault" {
     for_each = each.value.network_acls != null ? [each.value.network_acls] : []
     content {
       bypass                     = network_acls.value.bypass
-      default_action             = network_acls.value.default_action
+      default_action             = title(network_acls.value.default_action)
       ip_rules                   = network_acls.value.ip_rules
       virtual_network_subnet_ids = network_acls.value.virtual_network_subnet_ids
     }

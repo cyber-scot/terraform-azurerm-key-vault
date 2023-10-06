@@ -32,3 +32,8 @@ output "key_vault_names" {
   description = "The names of the created Key Vaults."
   value       = { for vault, key_vault in azurerm_key_vault.keyvault : vault => key_vault.name }
 }
+
+output "key_vault_uris" {
+  description = "The uris of the created Key Vaults."
+  value       = { for vault, key_vault in azurerm_key_vault.keyvault : vault => key_vault.vault_uri }
+}

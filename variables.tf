@@ -97,6 +97,8 @@ variable "key_vaults" {
     enabled_for_deployment          = optional(bool, true)
     enabled_for_disk_encryption     = optional(bool, true)
     enabled_for_template_deployment = optional(bool, true)
+    soft_delete_retention_days      = optional(number)
+    public_network_access_enabled   = optional(bool)
     enable_rbac_authorization       = optional(bool, true)
     purge_protection_enabled        = optional(bool, false) # Easier for automation
     access_policy = optional(list(object({
