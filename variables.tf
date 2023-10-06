@@ -91,8 +91,8 @@ variable "key_vaults" {
   type = list(object({
     name                            = string
     location                        = string
-    resource_group_name             = string
-    sku_name                        = optional(string, "Standard")
+    rg_name                         = string
+    sku_name                        = optional(string, "standard")
     tenant_id                       = optional(string)
     enabled_for_deployment          = optional(bool, true)
     enabled_for_disk_encryption     = optional(bool, true)

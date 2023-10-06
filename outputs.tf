@@ -1,11 +1,21 @@
+output "client_access_policy_certificate_permissions" {
+  description = "The key permissions of the client access policy."
+  value       = length(azurerm_key_vault_access_policy.client_access) > 0 ? azurerm_key_vault_access_policy.client_access[0].certificate_permissions : null
+}
+
 output "client_access_policy_id" {
-  description = "The ID of the access policy created for the client."
-  value       = azurerm_key_vault_access_policy.client_access[0].id
+  description = "The ID of the client access policy."
+  value       = length(azurerm_key_vault_access_policy.client_access) > 0 ? azurerm_key_vault_access_policy.client_access[0].id : null
 }
 
 output "client_access_policy_key_permissions" {
-  description = "The key permissions granted to the client by the access policy."
-  value       = azurerm_key_vault_access_policy.client_access[0].key_permissions
+  description = "The key permissions of the client access policy."
+  value       = length(azurerm_key_vault_access_policy.client_access) > 0 ? azurerm_key_vault_access_policy.client_access[0].key_permissions : null
+}
+
+output "client_access_policy_secret_permissions" {
+  description = "The key permissions of the client access policy."
+  value       = length(azurerm_key_vault_access_policy.client_access) > 0 ? azurerm_key_vault_access_policy.client_access[0].secret_permissions : null
 }
 
 output "key_vault_ids" {

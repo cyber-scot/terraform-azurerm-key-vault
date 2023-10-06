@@ -19,8 +19,8 @@ resource "azurerm_key_vault" "keyvault" {
 
   name                            = each.value.name
   location                        = each.value.location
-  resource_group_name             = each.value.resource_group_name
-  sku_name                        = each.value.sku_name
+  resource_group_name             = each.value.rg_name
+  sku_name                        = lower(each.value.sku_name)
   tenant_id                       = var.use_current_client == true ? data.azurerm_client_config.current_client[0].tenant_id : each.value.tenant_id
   enabled_for_deployment          = each.value.enabled_for_deployment
   enabled_for_disk_encryption     = each.value.enabled_for_disk_encryption
