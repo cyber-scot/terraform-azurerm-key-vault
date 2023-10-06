@@ -43,7 +43,7 @@ module "key_vault" {
       network_acls = {
         default_action             = "Deny"
         bypass                     = "AzureServices"
-        ip_rules                   = [chomp(data.http.client_ip.request_body)]
+        ip_rules                   = [chomp(data.http.client_ip.response_body)]
         virtual_network_subnet_ids = [module.network.subnets_ids["sn1-${module.network.vnet_name}"]]
       }
     }
